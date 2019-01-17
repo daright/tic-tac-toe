@@ -1,5 +1,5 @@
 import { put, all, takeEvery, select } from 'redux-saga/effects';
-import { CLICKED_FIELD, DECREMENT_TIMER, START_GAME, COMPLETE_GAME } from './actions';
+import { CLICKED_FIELD, COMPLETE_GAME } from './actions';
 import { findWinner, numberOfSteps } from '../utils';
 
 export function* rootSaga() {
@@ -7,12 +7,9 @@ export function* rootSaga() {
 }
 
 export function* clickFieldAsync({ fieldIndex }) {
-    console.log('click async', fieldIndex);
     yield put({ type: CLICKED_FIELD, fieldIndex });
     const fields = yield select(({ game }) => game.fields);
-    console.log(fields);
     const winner = findWinner(fields);
-    console.log(winner);
     if (winner) {
         yield put({ type: COMPLETE_GAME, winner, numberOfSteps: numberOfSteps(fields) });
     }
@@ -20,12 +17,4 @@ export function* clickFieldAsync({ fieldIndex }) {
 
 export function* watchFieldClick() {
     yield takeEvery('CLICK_FIELD', clickFieldAsync);
-}
-
-// export function* watchIncrementAsync() {
-//     yield takeEvery('START_GAME', clickFieldAsync);
-// }
-function* gen() {
-    console.log('asd');
-    yield put({ type: DECREMENT_TIMER });
 }
