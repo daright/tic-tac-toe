@@ -4,12 +4,14 @@ import Field from './Field';
 import { connect } from 'react-redux';
 import CurrentSymbolTurn from '../containers/CurrentSymbolTurn';
 import Timer from './Timer';
+import GameController from '../containers/GameController';
 
 function Gameboard({ fields }) {
     return (
         <div>
             <CurrentSymbolTurn />
             <Timer />
+            <GameController />
             <StyledBoardLayout>
                 {fields.map((field, index) => (
                     <Field key={index} index={index} field={field} />

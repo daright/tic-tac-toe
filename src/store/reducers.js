@@ -1,4 +1,4 @@
-import { CLICKED_FIELD, DECREMENT_TIMER, COMPLETE_GAME } from './actions';
+import { CLICKED_FIELD, DECREMENT_TIMER, COMPLETE_GAME, START_GAME, RESET_GAME } from './actions';
 import { flipSymbol } from '../utils';
 
 export const CROSS = 'CROSS';
@@ -8,7 +8,8 @@ export const NOT_FILLED = 'NOT_FILLED';
 const initialGameReducerState = {
     currentSymbol: CIRCLE,
     fields: new Array(9).fill(NOT_FILLED),
-    roundTimer: 30
+    roundTimer: 30,
+    gameInProgress: false
 };
 
 export const gameReducer = (state = initialGameReducerState, action) => {
@@ -22,6 +23,10 @@ export const gameReducer = (state = initialGameReducerState, action) => {
             return { ...state, roundTimer: state.roundTimer - 1 };
         case COMPLETE_GAME:
             return initialGameReducerState;
+        case RESET_GAME:
+            return initialGameReducerState;
+        case START_GAME:
+            return { ...initialGameReducerState, gameInProgress: true };
         default:
             return state;
     }

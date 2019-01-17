@@ -6,9 +6,9 @@ import Circle from './Circle';
 import { clickField } from '../store/actions';
 import { connect } from 'react-redux';
 
-function Field({ field, index, clickField }) {
+function Field({ field, index, clickField, gameInProgress }) {
     const onClickField = () => {
-        if (field === NOT_FILLED) {
+        if (field === NOT_FILLED && gameInProgress) {
             clickField(index);
         }
     };
@@ -16,7 +16,7 @@ function Field({ field, index, clickField }) {
 }
 
 export default connect(
-    null,
+    ({ game }) => ({ gameInProgress: game.gameInProgress }),
     { clickField: clickField }
 )(Field);
 
