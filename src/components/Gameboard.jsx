@@ -8,7 +8,7 @@ import GameController from '../containers/GameController';
 
 function Gameboard({ fields }) {
     return (
-        <div>
+        <StyledWrapper>
             <CurrentSymbolTurn />
             <Timer />
             <GameController />
@@ -17,14 +17,18 @@ function Gameboard({ fields }) {
                     <Field key={index} index={index} field={field} />
                 ))}
             </StyledBoardLayout>
-        </div>
+        </StyledWrapper>
     );
 }
 
 const StyledBoardLayout = styled.section`
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 5em);
     grid-auto-rows: minmax(5em, auto);
+`;
+
+const StyledWrapper = styled.section`
+    padding: 1em;
 `;
 
 const mapStateToProps = ({ game }) => ({ fields: game.fields });

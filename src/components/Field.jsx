@@ -12,7 +12,7 @@ function Field({ field, index, clickField, gameInProgress }) {
             clickField(index);
         }
     };
-    return <StyledField onClick={onClickField}>{field === CROSS ? <Cross /> : field === CIRCLE ? <Circle /> : field}</StyledField>;
+    return <StyledField onClick={onClickField}>{field === CROSS ? <Cross /> : field === CIRCLE ? <Circle /> : null}</StyledField>;
 }
 
 export default connect(
