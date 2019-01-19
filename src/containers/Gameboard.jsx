@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import Field from './Field';
+import Field from '../components/Field';
 import { connect } from 'react-redux';
-import CurrentSymbolTurn from '../containers/CurrentSymbolTurn';
+import CurrentSymbolTurn from './CurrentSymbolTurn';
 import Timer from './Timer';
-import GameController from '../containers/GameController';
+import GameController from './GameController';
 
 function Gameboard({ fields }) {
     return (
@@ -28,6 +28,7 @@ const StyledBoardLayout = styled.section`
 `;
 
 const StyledWrapper = styled.section`
+    flex: 1;
     padding: 1em;
 `;
 

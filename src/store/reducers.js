@@ -1,4 +1,4 @@
-import { CLICKED_FIELD, DECREMENT_TIMER, COMPLETE_GAME, START_GAME, RESET_GAME, SKIP_TURN } from './actions';
+import { CLICKED_FIELD, DECREMENT_TIMER, COMPLETE_GAME, START_GAME, RESET_GAME, SKIP_TURN, TOGGLE_MENU_BUTTON } from './actions';
 import { flipSymbol } from '../utils';
 
 export const CROSS = 'CROSS';
@@ -18,6 +18,7 @@ export const gameReducer = (state = initialGameReducerState, action) => {
             fields[action.fieldIndex] = state.currentSymbol;
             return { ...state, fields, currentSymbol: flipSymbol(state.currentSymbol) };
         case COMPLETE_GAME:
+            return { ...state, gameInProgress: false };
         case RESET_GAME:
             return initialGameReducerState;
         case START_GAME:
@@ -36,8 +37,9 @@ const initialCompletedGamesState = {
 export const completedGamesReducer = (state = initialCompletedGamesState, action) => {
     switch (action.type) {
         case COMPLETE_GAME:
-            const { winner, numberOfTurns } = action;
-            return { ...state, games: [...state.games, { winner, numberOfTurns, date: new Date() }] };
+            const { winner, numberOfSteps } = action;
+            console.log(action, state);
+            return { ...state, games: [...state.games, { winner, numberOfSteps, date: new Date() }] };
         default:
             return state;
     }
@@ -60,6 +62,20 @@ export const timerReducer = (state = initialTimerState, action) => {
         case COMPLETE_GAME:
         case RESET_GAME:
             return initialTimerState;
+        default:
+            return state;
+    }
+};
+
+const initialMenuState = {
+    isMenuOpen: false
+};
+
+export const menuReducer = (state = initialMenuState, action) => {
+    console.log(action);
+    switch (action.type) {
+        case TOGGLE_MENU_BUTTON:
+            return { ...state, isMenuOpen: !state.isMenuOpen };
         default:
             return state;
     }
