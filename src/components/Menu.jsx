@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 
 function Menu(props) {
-    console.log(props);
     return (
         <StyledNav isMenuOpen={props.isMenuOpen}>
             <Link to={'/game'}>Game</Link>

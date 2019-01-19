@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 
 function CompletedGamesList({ games }) {
-    console.log(games);
     return (
         <StyledList>
             {games.map(({ date, winner, numberOfSteps }) => (

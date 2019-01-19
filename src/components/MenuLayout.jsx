@@ -4,7 +4,6 @@ import Footer from './Footer';
 import Menu from './Menu';
 
 export default function MenuLayout(props) {
-    console.log(props);
     return (
         <StyledMenuLayout>
             <Menu />

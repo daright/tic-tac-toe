@@ -38,7 +38,6 @@ export const completedGamesReducer = (state = initialCompletedGamesState, action
     switch (action.type) {
         case COMPLETE_GAME:
             const { winner, numberOfSteps } = action;
-            console.log(action, state);
             return { ...state, games: [...state.games, { winner, numberOfSteps, date: new Date() }] };
         default:
             return state;
@@ -72,7 +71,6 @@ const initialMenuState = {
 };
 
 export const menuReducer = (state = initialMenuState, action) => {
-    console.log(action);
     switch (action.type) {
         case TOGGLE_MENU_BUTTON:
             return { ...state, isMenuOpen: !state.isMenuOpen };

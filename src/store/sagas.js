@@ -10,7 +10,6 @@ export function* clickFieldAsync({ fieldIndex }) {
     yield put({ type: CLICKED_FIELD, fieldIndex });
     const fields = yield select(({ game }) => game.fields);
     const winner = findWinner(fields);
-    console.log(numberOfSteps(fields), fields);
     if (winner) {
         yield put({ type: COMPLETE_GAME, winner, numberOfSteps: numberOfSteps(fields) });
     }
