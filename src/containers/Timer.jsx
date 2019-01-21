@@ -4,16 +4,24 @@ import { decrementTimer, skipTurn } from '../store/actions';
 
 class Timer extends Component {
     state = {
-        invervalId: null
+        invervalId: null,
+        numberOfSteps: 0
     };
     static getDerivedStateFromProps(props, state) {
+        if (!props.isActive) {
+            clearInterval(state.invervalId);
+            return { invervalId: null };
+        }
+        if (props.numberOfSteps > state.numberOfSteps) {
+            clearInterval(state.invervalId);
+            const invervalId = setInterval(props.decrementTimer, 1000);
+            return { invervalId };
+        }
         if (props.isActive && !state.invervalId) {
             const invervalId = setInterval(props.decrementTimer, 1000);
             return { invervalId };
-        } else if (!props.isActive) {
-            clearInterval(state.invervalId);
-            return { invervalId: null };
-        } else if (props.roundTimer === 0) {
+        }
+        if (props.roundTimer === 0) {
             clearInterval(state.invervalId);
             props.skipTurn();
             return { invervalId: null };
@@ -22,10 +30,14 @@ class Timer extends Component {
     }
     render() {
         const { roundTimer } = this.props;
-        return <h3>{`Round timer: ${roundTimer}`}</h3>;
+        return <p>{`Round timer: ${roundTimer}`}</p>;
     }
 }
-const mapStateToProps = ({ timer }) => ({ roundTimer: timer.roundTimer, isActive: timer.isActive });
+const mapStateToProps = ({ timer, game }) => ({
+    roundTimer: timer.roundTimer,
+    isActive: timer.isActive,
+    numberOfSteps: game.numberOfSteps
+});
 
 export default connect(
     mapStateToProps,

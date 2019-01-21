@@ -8,7 +8,8 @@ export const NOT_FILLED = 'NOT_FILLED';
 const initialGameReducerState = {
     currentSymbol: CIRCLE,
     fields: new Array(9).fill(NOT_FILLED),
-    gameInProgress: false
+    gameInProgress: false,
+    numberOfSteps: 0
 };
 
 export const gameReducer = (state = initialGameReducerState, action) => {
@@ -16,7 +17,7 @@ export const gameReducer = (state = initialGameReducerState, action) => {
         case CLICKED_FIELD:
             const fields = [...state.fields];
             fields[action.fieldIndex] = state.currentSymbol;
-            return { ...state, fields, currentSymbol: flipSymbol(state.currentSymbol) };
+            return { ...state, fields, currentSymbol: flipSymbol(state.currentSymbol), numberOfSteps: state.numberOfSteps + 1 };
         case COMPLETE_GAME:
             return { ...state, gameInProgress: false };
         case RESET_GAME:

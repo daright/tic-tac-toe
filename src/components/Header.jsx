@@ -14,8 +14,8 @@ export default function Header() {
 const StyledHeader = styled.header`
     display: flex;
     padding: 1em;
-    background-color: #ddd;
-    border-bottom: 1px solid black;
+    background-color: #1f1f1f;
+    color: #fff;
     z-index: 100;
     & > h1 {
         margin: 0;

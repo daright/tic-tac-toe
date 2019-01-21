@@ -1,8 +1,6 @@
-import { CIRCLE, CROSS, NOT_FILLED } from './store/reducers';
+import { CIRCLE, CROSS, NOT_FILLED } from './store/constants';
 
 export const flipSymbol = symbol => (symbol === CIRCLE ? CROSS : CIRCLE);
-
-export const numberOfSteps = fields => fields.filter(field => field !== NOT_FILLED).length;
 
 export const findWinner = fields => {
     //rows
@@ -25,10 +23,3 @@ export const findWinner = fields => {
         return fields[2];
     }
 };
-
-/*
-
-    0 1 2
-    3 4 5
-    6 7 8
-*/

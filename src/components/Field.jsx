@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Cross from './Cross';
-import { CROSS, CIRCLE, NOT_FILLED } from '../store/reducers';
+import { CROSS, CIRCLE, NOT_FILLED } from '../store/constants';
 import Circle from './Circle';
 import { clickField } from '../store/actions';
 import { connect } from 'react-redux';
@@ -23,6 +23,6 @@ export default connect(
 const StyledField = styled.div`
     width: 100%;
     height: 100%;
-    border: 1px solid black;
+    border: 1px solid #777;
     overflow: hidden;
 `;

@@ -25,6 +25,8 @@ const StyledBoardLayout = styled.section`
     display: grid;
     grid-template-columns: repeat(3, 5em);
     grid-auto-rows: minmax(5em, auto);
+    justify-content: center;
+    padding: 1em;
 `;
 
 const StyledWrapper = styled.section`

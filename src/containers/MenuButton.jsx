@@ -17,9 +17,11 @@ const StyledButton = styled.button`
     margin: 0.5em 1em 0.5em 0;
     border: none;
     outline: none;
+    background-color: transparent;
     cursor: pointer;
     & > svg {
         width: 2em;
+        fill: #fff;
     }
     @media (max-width: 320px) {
         display: block;

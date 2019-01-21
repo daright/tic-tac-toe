@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 function CurrentSymbolTurn({ currentSymbol }) {
-    return <h2>{`Current symbol turn ${currentSymbol}`}</h2>;
+    return <p>{`Current symbol turn ${currentSymbol}`}</p>;
 }
 
 const mapStateToProps = ({ game }) => ({ currentSymbol: game.currentSymbol });

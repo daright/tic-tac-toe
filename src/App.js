@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Gameboard from './containers/Gameboard';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
