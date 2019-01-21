@@ -12,7 +12,11 @@ function Field({ field, index, clickField, gameInProgress }) {
             clickField(index);
         }
     };
-    return <StyledField onClick={onClickField}>{field === CROSS ? <Cross /> : field === CIRCLE ? <Circle /> : null}</StyledField>;
+    return (
+        <StyledField gameInProgress={gameInProgress} onClick={onClickField}>
+            {field === CROSS ? <Cross /> : field === CIRCLE ? <Circle /> : null}
+        </StyledField>
+    );
 }
 
 export default connect(
@@ -25,4 +29,5 @@ const StyledField = styled.div`
     height: 100%;
     border: 1px solid #777;
     overflow: hidden;
+    ${({ gameInProgress }) => (gameInProgress ? `cursor: pointer;:hover {background-color: rgba(0, 0, 0, 0.05);}` : '')}
 `;

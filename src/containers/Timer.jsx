@@ -28,6 +28,10 @@ class Timer extends Component {
         }
         return null;
     }
+
+    componentWillUnmount() {
+        clearInterval(this.state.invervalId);
+    }
     render() {
         const { roundTimer } = this.props;
         return <p>{`Round timer: ${roundTimer}`}</p>;
